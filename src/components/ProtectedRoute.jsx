@@ -6,7 +6,7 @@ export default function ProtectedRoute({ children }) {
   const session = getSession();
 
   if (!session) {
-    toast.error("Unauthorized! Please log in to access this page.");
+    toast.error("Your sessions has expired, please log in again.");
     return <Navigate to="/auth/login" replace />;
   }
 
