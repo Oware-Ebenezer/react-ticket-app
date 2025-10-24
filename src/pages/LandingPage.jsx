@@ -1,6 +1,6 @@
 import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
-import heroWave from "/assets/wave.svg";
+import heroWave from "/assets/wavy.svg";
 
 function LandingPage() {
   const weOffer = [
@@ -27,16 +27,17 @@ function LandingPage() {
         <div className="absolute top-10 right-20 w-40 h-40 bg-amber-700 rounded-full opacity-20"></div>
         <div className="absolute top-50 left-50 w-40 h-40 bg-blue-700 rounded-full opacity-20"></div>
         <div className="max-w=[1440px] mx-auto z-10">
-          <h2 className="text-4xl md:text-6xl font-black text-gray-800 leading-tight">
+          <h1 className="text-4xl md:text-6xl font-black">OKICKET</h1>
+          <h2 className="text-2xl md:text-4xl font-bold text-gray-800 leading-tight">
             Simplify Your{" "}
             <span className="text-amber-700">Ticket Management</span>
           </h2>
-          <p className="text-gray-800 mt-4 max-w-2xl mx-auto">
+          <p className="text-gray-800 mt-4 mb-3 max-w-2xl mx-auto">
             Manage, track, and resolve tickets differently with a sleek and
-            secure web app <span className="font-bold text-xl">[OKICKET]</span>.
+            secure web app.
           </p>
 
-          <section className="mt-8 flex justify-center gap-4">
+          <section className="mb-20 flex justify-center gap-4">
             <a
               href="/auth/signup"
               className="bg-blue-800 text-white px-6 py-3 rounded-lg hover:bg-blue-900 transition"
@@ -45,7 +46,7 @@ function LandingPage() {
             </a>
             <a
               href="/auth/login"
-              className="bg-amber-600 text-white px-6 py-3 rounded-lg hover:bg-amber-700 transition"
+              className="bg-amber-600 text-white px-6 py-3 rounded-lg hover:bg-amber-700 transition "
             >
               Login
             </a>
@@ -54,7 +55,7 @@ function LandingPage() {
         <img
           src={heroWave}
           alt="Wavy backrgound"
-          className="absolute bottom-0 left-0 top-50 w-full"
+          className="absolute bottom-0 left-0 w-full"
         />
       </section>
 
