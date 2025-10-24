@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
-import { getUsers, setSession } from "../utils/authUtils";
+import { getUsers, setSession } from "../../utils/authUtils";
 import AuthLayout from "./AuthLayout";
 
 function Login() {

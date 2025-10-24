@@ -1,7 +1,7 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link} from "react-router-dom";
 import toast from "react-hot-toast";
-import { getUsers, saveUsers } from "../../utils/authUtils";
+import { getUsers, saveUsers, setSession } from "../../utils/authUtils";
 import AuthLayout from "./AuthLayout";
 
 function Signup() {
@@ -22,10 +22,12 @@ function Signup() {
     const users = getUsers();
     if (users.some((user) => user.email === email)) {
       toast.error("User with this email already exists!");
+      navigate("/auth/login");
       return;
     }
     const newUser = { name, email, password };
     saveUsers(newUser);
+    setSession(newUser);
     toast.success("Signup successfully!.");
     navigate("/dashboard");
   };
@@ -36,7 +38,7 @@ function Signup() {
         <input
           type="text"
           name="name"
-          placeholder="Mr. John Smith"
+          placeholder="Mr.John Smith"
           onChange={handleChange}
           className="w-full border rounded-lg p-3 focus:ring-2 focus:ring-blue-400 focus:border-0"
         />
@@ -56,7 +58,7 @@ function Signup() {
         />
         <button
           type="submit"
-          className="w-full bg-green-600 hover:bg-green-700 text-white rounded-lg p-3 transition"
+          className="w-full bg-blue-600 hover:bg-blue-700 text-white rounded-lg p-3 transition"
         >
           Sign Up
         </button>
