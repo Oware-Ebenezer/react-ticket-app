@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
-import { clearSession, getSession } from "./../utils/authUtils";
+import { Link,} from "react-router-dom";
+import { getSession } from "./../utils/authUtils";
 import { ticketsServices } from "./../services/ticketServices";
 import { toast } from "react-hot-toast";
+import LogoutButton from "../components/LogoutButton";
 
 function Dashboard() {
   const [stats, setStats] = useState({
@@ -11,7 +12,7 @@ function Dashboard() {
     in_progress: 0,
     closed: 0,
   });
-  const navigate = useNavigate();
+//   const navigate = useNavigate();
   const session = getSession();
 
   useEffect(() => {
@@ -27,14 +28,14 @@ function Dashboard() {
     }
   }, []);
 
-  function handleLogout() {
-    clearSession();
-    toast.success("You have logged out.");
-    navigate("/auth/login");
-  }
+  //   function handleLogout() {
+  //     clearSession();
+  //     toast.success("You have logged out.");
+  //     navigate("/");
+  //   }
 
   return (
-    <main className="container py-8">
+    <main className="max-w-[1440px] mx-auto px-4 py-8">
       <section className="flex justify-between items-center mb-6">
         <div>
           <h1 className="text-2xl font-bold">Okicket Dashboard</h1>
@@ -49,29 +50,86 @@ function Dashboard() {
           <Link to="/tickets" className="px-3 py-2 border rounded">
             Manage Tickets
           </Link>
-          <button
+          {/* <button
             onClick={handleLogout}
             className="px-3 py-2 bg-red-600 text-white rounded"
           >
             Logout
-          </button>
+          </button> */}
+          <LogoutButton />
         </div>
       </section>
 
       <section className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-        <div className="card">
+        <div
+          className="
+    bg-[#0b1220]/80 
+    backdrop-blur-sm 
+    border border-white/10 
+    rounded-2xl 
+    p-5 
+    text-white 
+    shadow-md 
+    hover:shadow-lg 
+    transition-all 
+    duration-300 
+    hover:scale-[1.02]
+  "
+        >
           <h4 className="text-sm text-[#94a3b8]">Total Tickets</h4>
           <p className="text-2xl font-semibold mt-2">{stats.total}</p>
         </div>
-        <div className="card">
+        <div
+          className="
+    bg-[#0b1220]/80 
+    backdrop-blur-sm 
+    border border-white/10 
+    rounded-2xl 
+    p-5 
+    text-white 
+    shadow-md 
+    hover:shadow-lg 
+    transition-all 
+    duration-300 
+    hover:scale-[1.02]
+  "
+        >
           <h4 className="text-sm text-[#94a3b8]">Open</h4>
           <p className="text-2xl font-semibold mt-2">{stats.open}</p>
         </div>
-        <div className="card">
+        <div
+          className="
+    bg-[#0b1220]/80 
+    backdrop-blur-sm 
+    border border-white/10 
+    rounded-2xl 
+    p-5 
+    text-white 
+    shadow-md 
+    hover:shadow-lg 
+    transition-all 
+    duration-300 
+    hover:scale-[1.02]
+  "
+        >
           <h4 className="text-sm text-[#94a3b8]">In Progess</h4>
           <p className="text-2xl font-semibold mt-2">{stats.in_progress}</p>
         </div>
-        <div className="card">
+        <div
+          className="
+    bg-[#0b1220]/80 
+    backdrop-blur-sm 
+    border border-white/10 
+    rounded-2xl 
+    p-5 
+    text-white 
+    shadow-md 
+    hover:shadow-lg 
+    transition-all 
+    duration-300 
+    hover:scale-[1.02]
+  "
+        >
           <h4 className="text-sm text-[#94a3b8]">Closed</h4>
           <p className="text-2xl font-semibold mt-2">{stats.closed}</p>
         </div>

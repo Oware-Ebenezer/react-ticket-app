@@ -16,19 +16,18 @@ function Tickets() {
     }
   }, []);
 
-  function handleCreate(payload) {
+  const handleCreate = (payload) => {
     try {
       const created = ticketsServices.create(payload);
       setTickets((s) => [created, ...s]);
       toast.success("Ticket created successfully");
     } catch (err) {
-      if (err.meta) {
-        Object.values(err.meta).forEach((msg) => toast.error(msg));
-      } else toast.error(err.message || "Failed to create ticket");
+      if (err.meta) Object.values(err.meta).forEach((msg) => toast.error(msg));
+      else toast.error(err.message || "Failed to create ticket");
     }
-  }
+  };
 
-  function handleUpdate(id, patch) {
+  const handleUpdate = (id, patch) => {
     try {
       const updated = ticketsServices.update(id, patch);
       setTickets((s) => s.map((x) => (x.id === updated.id ? updated : x)));
@@ -38,8 +37,9 @@ function Tickets() {
       if (err.meta) Object.values(err.meta).forEach((msg) => toast.error(msg));
       else toast.error(err.message || "Failed to update ticket");
     }
-  }
-  function handleDelete(id) {
+  };
+
+  const handleDelete = (id) => {
     try {
       ticketsServices.remove(id);
       setTickets((s) => s.filter((x) => x.id !== id));
@@ -47,19 +47,20 @@ function Tickets() {
     } catch (err) {
       toast.error(err.message || "Failed to delete ticket");
     }
-  }
+  };
 
   return (
-    <main className="container py-8">
+    <main className="max-w-[1440px] mx-auto px-4 py-8">
       <div className="flex items-center justify-between mb-6">
         <h2 className="text-2xl font-bold">Ticket Management</h2>
       </div>
+
       <section className="mb-6">
         <h3 className="text-lg font-semibold mb-2">
           {editing ? "Edit Ticket" : "Create Ticket"}
         </h3>
         <TicketForm
-          initial={editing}
+          initial={editing || {}}
           onSubmit={(payload) => {
             if (editing) handleUpdate(editing.id, payload);
             else handleCreate(payload);
@@ -67,10 +68,25 @@ function Tickets() {
           onCancel={() => setEditing(null)}
         />
       </section>
+
       <section>
         <h3 className="text-lg font-semibold mb-4">All Tickets</h3>
         {tickets.length === 0 ? (
-          <div className="card text-[#94a3b8]">
+          <div
+            className="
+    bg-[#0b1220]/80 
+    backdrop-blur-sm 
+    border border-white/10 
+    rounded-2xl 
+    p-5 
+    text-white 
+    shadow-md 
+    hover:shadow-lg 
+    transition-all 
+    duration-300 
+    hover:scale-[1.02]
+  "
+          >
             No tickets yet. Create one above
           </div>
         ) : (
@@ -79,7 +95,7 @@ function Tickets() {
               <TicketCard
                 key={t.id}
                 ticket={t}
-                onEdit={(t) => setEditing(t)}
+                onEdit={() => setEditing(t)}
                 onDelete={handleDelete}
               />
             ))}
@@ -89,4 +105,5 @@ function Tickets() {
     </main>
   );
 }
+
 export default Tickets;

@@ -5,9 +5,20 @@ function statusClass(s) {
 }
 function TicketCard({ ticket, onEdit, onDelete }) {
   return (
-    <article className="bg-[#0b1220] flex flex-col justify-between">
+    <article
+      className=" bg-white 
+    backdrop-blur-sm 
+    border border-b-gray-400 
+    rounded-2xl 
+    p-5 
+    text-black 
+    shadow-md 
+    hover:shadow-lg 
+    transition-all 
+    duration-300 flex flex-col justify-between"
+    >
       <section>
-        <h3 className="text-lg font-semibold text-white">{ticket.title}</h3>
+        <h3 className="text-lg font-semibold text-gray-600">{ticket.title}</h3>
         <p className="text-sm text-[#94a3b8] mt-2">{ticket.description}</p>
       </section>
       <section className="mt-4 flex items-center justify-between">
