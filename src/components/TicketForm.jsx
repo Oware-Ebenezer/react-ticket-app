@@ -4,7 +4,6 @@ import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
 
 function TicketForm({ initial = {}, onSubmit, onCancel }) {
-  console.log("Ticket form", initial);
   const [title, setTitle] = useState(initial.title ?? "");
   const [status, setStatus] = useState(initial.status ?? "open");
   const [description, setDescription] = useState(initial.desc ?? "");
