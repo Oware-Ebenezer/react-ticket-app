@@ -1,5 +1,6 @@
 {
-  "name": "react-ticket-app",
+  "name": "ticket-app",
+  "homepage": "https://oware-ebenezer.github.io/react-ticket-app",
   "private": true,
   "version": "0.0.0",
   "type": "module",
