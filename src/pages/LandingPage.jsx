@@ -1,6 +1,7 @@
 import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
 import heroWave from "/assets/wavy.svg";
+import { Link } from "react-router-dom";
 
 function LandingPage() {
   const weOffer = [
@@ -38,18 +39,18 @@ function LandingPage() {
           </p>
 
           <section className="mb-20 flex justify-center gap-4">
-            <a
-              href="/auth/signup"
+            <Link
+              to="/auth/signup"
               className="bg-blue-800 text-white px-6 py-3 rounded-lg hover:bg-blue-900 transition"
             >
               Get Started
-            </a>
-            <a
-              href="/auth/login"
+            </Link>
+            <Link
+              to="/auth/login"
               className="bg-amber-600 text-white px-6 py-3 rounded-lg hover:bg-amber-700 transition "
             >
               Login
-            </a>
+            </Link>
           </section>
         </div>
         <img
